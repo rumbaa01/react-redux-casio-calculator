@@ -23,7 +23,7 @@ type AppState = {
   memory: number,
   isInitialDisplay: boolean
 };
-export const initialState: AppState = {
+export const initialState: AppState= {
   display: '0',
   operation: '',
   isError: false,

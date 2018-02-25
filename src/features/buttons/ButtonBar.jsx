@@ -5,83 +5,22 @@ import './ButtonBar.css';
 
 class UpdateBar extends React.Component {
 
-  createButton(title, action, key) {
+  createButton = (title, key) => {
+    const { dispatchActions} = this.props;
     return (
       // TODO Update with class adding
       <button className='btn'
               key={key}
-              onClick={action}>
+              onClick={() => dispatchActions(title)}>
         {title}
       </button>
     )
   }
-  renderRow(row) {
-    const result = [];
-    let index = 0;
-    for (let [key, value] of row) {
-      result.push(this.createButton(key, value, index++));
-    }
-    return result;
+  renderRow = (row) =>  {
+    return row.map(this.createButton);
   }
   render() {
-    const { 
-      getSqrt,
-      switchOff,
-      switchOn,
-      clearMemory,
-      getMemory,
-      reduceMemory,
-      addMemory,
-      addOperation,
-      getPercentage,
-      typeDigit,
-      plusMinus,
-      showResult,
-      clearDisplay
-
-     } = this.props;
-
-    const firstRow = new Map([
-      [[constants.SQRT], () => getSqrt()],
-      [[constants.OFF], () => switchOff()]
-    ]);
-
-    const secondRow = new Map([
-      [[constants.MEMORY_CLR], () => clearMemory()],
-      [[constants.MEMORY_RETURN], () => getMemory()],
-      [[constants.MEMORY_MINUS], () => reduceMemory()],
-      [[constants.MEMORY_PLUS], () => addMemory()],
-      [[constants.DIVIDE], () => addOperation(constants.DIVIDE)],
-    ]);
-
-    const thirdRow = new Map([
-      [[constants.PERCENT], () => getPercentage()],
-      ['7', () => typeDigit('7')],
-      ['8', () => typeDigit('8')],
-      ['9', () => typeDigit('9')],
-      [[constants.MULT], () => addOperation(constants.MULT)],
-    ]);
-
-    const fourthRow = new Map([
-      [[constants.PLUSMINUS], () => plusMinus()],
-      ['4', () => typeDigit('4')],
-      ['5', () => typeDigit('5')],
-      ['6', () => typeDigit('6')],
-      [[constants.MINUS], () => addOperation(constants.MINUS)],
-    ]);
-
-    const fifthRow = new Map([
-      ['1', () => typeDigit('1')],
-      ['2', () => typeDigit('2')],
-      ['3', () => typeDigit('3')],
-    ]);
-
-    const sixRow = new Map([
-      ['0', () => typeDigit('0')],
-      [[constants.DOT], () => typeDigit(constants.DOT)],
-      [[constants.RESULT], () => showResult()],
-    ]);
-
+    const { dispatchActions } = this.props;
     return (
       <div className='btn-bar'>
         <div className='row firstRow'>
@@ -89,42 +28,41 @@ class UpdateBar extends React.Component {
             SL-300SV
           </div>
           <div>
-            {this.renderRow(firstRow)}
+            {this.renderRow(constants.firstRow)}
           </div>
         </div>
         <div className='row'>
-          {this.renderRow(secondRow)}
+          {this.renderRow(constants.secondRow)}
         </div>
         <div className='row'>
-          {this.renderRow(thirdRow)}
+          {this.renderRow(constants.thirdRow)}
         </div>
         <div className='row'>
-          {this.renderRow(fourthRow)}
+          {this.renderRow(constants.fourthRow)}
         </div>
         <div className='row'>
           <button className='btn red'
-                  onClick={() => clearDisplay()}>
+                  onClick={() => dispatchActions(constants.CLEAR)}>
             {constants.CLEAR}
           </button>
-          {this.renderRow(fifthRow)}
+          {this.renderRow(constants.fifthRow)}
           <button className='btn big'
-                  onClick={() => addOperation(constants.PLUS)}>
+                  onClick={() => dispatchActions(constants.PLUS)}>
             {constants.PLUS}
           </button>
         </div>
         <div className='row'>
           <div className='switchOn'>
             <button className='btn red'
-                    onClick={() => switchOn()}>
+                    onClick={() => dispatchActions(constants.ON)}>
               {constants.ON}
             </button>
             <div>on</div>
           </div>
-          {this.renderRow(sixRow)}
+          {this.renderRow(constants.sixRow)}
         </div>
       </div>
     )
   }
 }
-
 export default UpdateBar;
