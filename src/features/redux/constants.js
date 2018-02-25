@@ -1,0 +1,1 @@
+export const MAX_DIGITS: number = 8;
