@@ -20,5 +20,5 @@ export const firstRow: string[] = [ SQRT, OFF ];
 export const secondRow: string[] = [ MEMORY_CLR, MEMORY_RETURN, MEMORY_MINUS, MEMORY_PLUS, DIVIDE ];
 export const thirdRow: string[] = [ PERCENT, '7', '8', '9', MULT ];
 export const fourthRow: string[] = [PLUSMINUS,'4','5','6', MINUS];
-export const fifthRow: string[] = ['1','2','3'];
+export const fifthRow: string[] = [CLEAR, '1','2','3', PLUS];
 export const sixRow: string[] = ['0', DOT, RESULT];

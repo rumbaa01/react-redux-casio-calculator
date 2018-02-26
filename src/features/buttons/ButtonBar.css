@@ -14,13 +14,13 @@
   border-radius: 10px;
   border: none;
   color: #fff;
-  background-color: #3a3a3a;
+  background-color: #444549;
   margin: 0 4px 10px 8px;
   height: 40px;
-  width: 50px;
+  width: 46px;
   box-shadow: 0 -1px 0 1px #222121, inset -1px 1px 10px 1px #515151;
   transform: perspective(25px) rotateX(-4deg);
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .btn:active {
@@ -38,10 +38,32 @@
 }
 
 .red {
-  background-color: #a72d45;
-  box-shadow: 0px -1px 0px 1px #671c2a;
+  background-color: #a34b64;
+  box-shadow: 0px -1px 0px 1px #a34b64;
 }
-
+.switchOn .btn.red{
+  position: relative;
+}
+.switchOn .btn.red:after{
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 35px;
+  background-color: #444549;
+  right: -5px;
+  top: 3px;
+  border-radius: 0px 6px 6px 0px;
+}
+.switchOn .btn.red:before{
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 35px;
+  background-color: #444549;
+  left: -5px;
+  top: 3px;
+  border-radius: 6px 0px 0px 6px;
+}
 .switchOn {
   display: flex;
   flex-direction: column;
@@ -74,13 +96,13 @@
   font-size: 13px;
   text-align: center;
   padding-right: 70px;
-  padding-left: 32px;
+  padding-left: 21px;
 }
 
 .row {
   display: flex;
   align-items: baseline;
-  padding: 0 15px;
+  padding: 0 17px;
   position: relative;
 }
 

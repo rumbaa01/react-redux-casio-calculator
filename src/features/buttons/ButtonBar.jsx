@@ -7,9 +7,10 @@ class UpdateBar extends React.Component {
 
   createButton = (title, key) => {
     const { dispatchActions} = this.props;
+    const buttonClassRed = (title === constants.ON ||  title === constants.CLEAR) && 'red';
+    const buttonClassBig = title === constants.PLUS && 'big';
     return (
-      // TODO Update with class adding
-      <button className='btn'
+      <button className={`btn ${buttonClassRed} ${buttonClassBig}`}
               key={key}
               onClick={() => dispatchActions(title)}>
         {title}
@@ -41,22 +42,11 @@ class UpdateBar extends React.Component {
           {this.renderRow(constants.fourthRow)}
         </div>
         <div className='row'>
-          <button className='btn red'
-                  onClick={() => dispatchActions(constants.CLEAR)}>
-            {constants.CLEAR}
-          </button>
           {this.renderRow(constants.fifthRow)}
-          <button className='btn big'
-                  onClick={() => dispatchActions(constants.PLUS)}>
-            {constants.PLUS}
-          </button>
         </div>
         <div className='row'>
           <div className='switchOn'>
-            <button className='btn red'
-                    onClick={() => dispatchActions(constants.ON)}>
-              {constants.ON}
-            </button>
+            {this.createButton(constants.ON, constants.ON)}
             <div>on</div>
           </div>
           {this.renderRow(constants.sixRow)}
